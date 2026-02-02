@@ -28,11 +28,11 @@ export default function Recipe({ recipe }: RecipeProps) {
   } = recipe;
 
   return (
-    <div className="font-sans">
+    <div>
       {/* Back button */}
       <Link
         href="/"
-        className="inline-flex items-center gap-2 text-sm hover:text-[var(--accent)] transition-colors mb-6"
+        className="inline-flex items-center gap-2 text-sm font-semibold hover:text-[var(--accent)] transition-colors mb-6"
       >
         <span>←</span>
         <span>Back to Recipes</span>

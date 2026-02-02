@@ -1,13 +1,17 @@
 @import "tailwindcss";
 
+/* Retro Cookbook Color Palette */
 :root {
-  --background: #d4c283;
-  --foreground: #3f3a2b;
-  --header:rgb(149, 127, 85);
-  --accent: #b96e2c;
+  --background: #FFF8F0; /* Cream */
+  --foreground: #2B2B2B; /* Charcoal */
+  --header: #3A5A40; /* Deep Forest Green */
+  --accent: #C85C3D; /* Burnt Orange/Rust */
+  --card-bg: #FFFEF9; /* Light cream for cards */
+  --border: #E5DDD1; /* Subtle border */
 
-  --font-sans: var(--font-geist-sans, Arial, sans-serif);
-  --font-mono: var(--font-geist-mono, monospace);
+  --font-display: var(--font-playfair, 'Playfair Display', Georgia, serif);
+  --font-serif: Georgia, 'Times New Roman', serif;
+  --font-sans: system-ui, -apple-system, Arial, sans-serif;
 }
 
 @theme inline {
@@ -15,42 +19,60 @@
   --color-foreground: var(--foreground);
   --color-header: var(--header);
   --color-accent: var(--accent);
+  --font-display: var(--font-display);
+  --font-serif: var(--font-serif);
   --font-sans: var(--font-sans);
-  --font-mono: var(--font-mono);
 }
 
 body {
   background-color: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans);
+  font-family: var(--font-serif);
   margin: 0;
   padding: 0;
+  line-height: 1.7;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.2;
 }
 
 header {
-  color: var(--foreground);
+  color: var(--background);
   padding: 1rem 2rem;
 }
 
 .card {
-  background-color: #f6f3ea;
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  background-color: var(--card-bg);
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
 }
 
+.card:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-    --header:rgb(91, 77, 49);
-    --accent: #d4a95f;
+    --background: #1A1410; /* Deep brown-black */
+    --foreground: #F5F1E8; /* Light cream */
+    --header: #5A7C5E; /* Muted forest green */
+    --accent: #D4742C; /* Softer rust */
+    --card-bg: #2A2118; /* Darker brown */
+    --border: #3D3530; /* Dark border */
   }
 
   .card {
-    background-color: #1a1a1a;
-    border-color: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    background-color: var(--card-bg);
+    border-color: var(--border);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  }
+
+  .card:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
   }
 }

@@ -2,12 +2,12 @@ import Header from "../components/header";
 
 export default function About() {
   return (
-    <div className="font-sans min-h-screen pb-8 sm:pb-20">
+    <div className="min-h-screen pb-8 sm:pb-20">
       <Header subtitle="About This Site" />
       <main className="w-full max-w-4xl mx-auto px-4 sm:px-6 mt-8">
         <div className="card p-8 space-y-6">
           <section>
-            <h2 className="text-2xl font-semibold font-mono mb-4">Who We Are</h2>
+            <h2 className="text-2xl font-bold mb-4">Who We Are</h2>
             <p className="text-lg leading-relaxed">
               Easy Bread Recipe is built and maintained by Matt Terrian, a full
               stack developer living in Southfield, Michigan who specializes in
@@ -19,7 +19,7 @@ export default function About() {
           </section>
 
           <section>
-            <h2 className="text-2xl font-semibold font-mono mb-4">Our Mission</h2>
+            <h2 className="text-2xl font-bold mb-4">Our Mission</h2>
             <p className="text-lg leading-relaxed">
               This website serves to provide you with some recipes to get started
               with making your own bread at home, without making you look at a

@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Card from "./components/card";
-import RecipeFilter from "./components/filter";
 import Header from "./components/header";
 import { recipes } from "./recipes/data";
 
@@ -25,25 +24,58 @@ export default function Home() {
   });
 
   return (
-  <div className="font-sans min-h-screen pb-8 sm:pb-20 flex flex-col items-center">
-    <Header/>
-    <div className="w-full max-w-6xl mx-auto px-2">
-      {/* Hero Section */}
-      <div className="text-center mb-8">
-        <h2 className="text-2xl sm:text-3xl font-mono mb-2">No fluff. Just flour.</h2>
-        <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400">
-          Simple bread recipes without the life story.
-        </p>
-      </div>
+    <div className="min-h-screen pb-8 sm:pb-20 flex flex-col items-center">
+      <Header />
+      <div className="w-full max-w-6xl mx-auto px-4">
+        {/* Simplified Hero */}
+        <div className="text-center mb-6">
+          <p className="text-lg sm:text-xl italic text-[var(--foreground)] opacity-80">
+            No fluff. Just flour.
+          </p>
+        </div>
 
-      <RecipeFilter
-        categories={categories}
-        selectedCategory={selectedCategory}
-        onSelectCategory={setSelectedCategory}
-        searchQuery={searchQuery}
-        onSearchChange={setSearchQuery}
-      />
-      <main className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 row-start-2 w-full max-w-6xl">
+        {/* Category Filter as prominent buttons */}
+        <div className="mb-8">
+          <div className="flex flex-wrap justify-center gap-3 mb-4">
+            <button
+              onClick={() => setSelectedCategory("All")}
+              className={`px-6 py-3 rounded-lg font-semibold transition-all ${
+                selectedCategory === "All"
+                  ? "bg-[var(--accent)] text-white shadow-md"
+                  : "bg-white border-2 border-[var(--border)] text-[var(--foreground)] hover:border-[var(--accent)]"
+              }`}
+            >
+              All Recipes
+            </button>
+            {categories.map((category) => (
+              <button
+                key={category}
+                onClick={() => setSelectedCategory(category)}
+                className={`px-6 py-3 rounded-lg font-semibold transition-all ${
+                  selectedCategory === category
+                    ? "bg-[var(--accent)] text-white shadow-md"
+                    : "bg-white border-2 border-[var(--border)] text-[var(--foreground)] hover:border-[var(--accent)]"
+                }`}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
+
+          {/* Search moved to secondary position */}
+          <div className="max-w-md mx-auto">
+            <input
+              type="text"
+              placeholder="Search recipes..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full px-4 py-2 border-2 border-[var(--border)] rounded-lg focus:outline-none focus:border-[var(--accent)] bg-white"
+            />
+          </div>
+        </div>
+
+        {/* Recipe Grid */}
+        <main className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredRecipes.map((recipe) => (
             <Card
               key={recipe.id}
@@ -56,9 +88,9 @@ export default function Home() {
               categories={recipe.categories}
             />
           ))}
-      </main>
+        </main>
+      </div>
     </div>
-  </div>
 
 
   );
